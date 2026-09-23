@@ -49,22 +49,6 @@ const observer = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => observer.observe(el));
 
-/* ——— SKILL BARS — animate when in view ——— */
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const fills = entry.target.querySelectorAll('.skill-bar__fill');
-            fills.forEach(fill => {
-                fill.style.width = fill.dataset.width + '%';
-            });
-            skillObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.3 });
-
-const skillsGrid = document.getElementById('skillsGrid');
-if (skillsGrid) skillObserver.observe(skillsGrid);
-
 /* ——— CONTACT FORM (demo handler) ——— */
 document.getElementById('contactForm').addEventListener('submit', function (e) {
     e.preventDefault();
